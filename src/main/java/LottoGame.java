@@ -47,11 +47,10 @@ public class LottoGame {
             int min = 1;
             int max = 99;
 
-            int nextInt = secureRandomGenerator.nextInt(max - min +1) + min;
+            int nextInt = secureRandomGenerator.nextInt(max - min + 1) + min;
             randomNumbers.add(nextInt);
         }
         return randomNumbers;
     }
-
 
 }

@@ -16,6 +16,15 @@ public class LottoGameStart {
 
         Set<Integer> randomNumbers = lottoGame.randomNumbers();
 
-        System.out.println("Twoje liczby to: " + randomNumbers.toString());
+        System.out.println("Wylosowane liczby to: " + randomNumbers.toString());
+
+        numbers.retainAll(randomNumbers);
+
+        System.out.println("Liczba trafionych liczb to: " + numbers.size());
+
+        if (!numbers.isEmpty()) {
+            System.out.println("Twoje trafione liczby: " + numbers.toString());
+        }
+
     }
 }
