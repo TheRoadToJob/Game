@@ -1,8 +1,9 @@
+import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 
 public class LottoGameStart {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
         System.out.println("Wybierz 6 liczb z puli od 1 do 99.");
 
@@ -11,5 +12,10 @@ public class LottoGameStart {
 
         System.out.println("Twoje liczby to: " + numbers.toString());
 
+        System.out.println("Teraz losujemy liczby.");
+
+        Set<Integer> randomNumbers = lottoGame.randomNumbers();
+
+        System.out.println("Twoje liczby to: " + randomNumbers.toString());
     }
 }
