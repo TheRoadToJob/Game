@@ -1,56 +1,37 @@
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class LottoGame {
 
+    private final UserInput userInput;
+    private final RandomNumberGenerator randomNumberGenerator;
+
     private static final int QUANTITY_OF_NUMBERS = 6;
 
-    public LottoGame() throws NoSuchAlgorithmException {
+    public LottoGame(UserInput userInput, RandomNumberGenerator randomNumberGenerator) {
+        this.userInput = userInput;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
+    public void play() {
 
-    public Set<Integer> selectNumbers() {
+        System.out.println("Wybierz 6 liczb z puli od 1 do 99.");
 
-        Set<Integer> selectedNumbers = new HashSet<>();
+        Set<Integer> userNumbers = userInput.selectNumbers(QUANTITY_OF_NUMBERS);
+        System.out.println("Twoje liczby to: " + userNumbers);
 
+        System.out.println("Teraz losujemy liczby.");
+        Set<Integer> drawnNumbers = randomNumberGenerator.generateRandomNumbers(QUANTITY_OF_NUMBERS);
+        System.out.println("Wylosowane liczby to: " + drawnNumbers);
 
-        while (selectedNumbers.size() != QUANTITY_OF_NUMBERS) {
-            Scanner scanner = new Scanner(System.in);
-            try {
-                System.out.println("Podaj liczbę: ");
-                int num = scanner.nextInt();
+        userNumbers.retainAll(drawnNumbers);
 
-                if (num > 0 && num < 100) {
-                    selectedNumbers.add(num);
-                } else {
-                    System.out.println("Podałeś liczbę spoza zakresu!");
-                }
+        System.out.println("Liczba trafionych liczb to: " + userNumbers.size());
 
-            } catch (InputMismatchException e) {
-                System.out.println("Błąd! Wprowadź liczbę całkowitą.");
-            }
+        if (!userNumbers.isEmpty()) {
+            System.out.println("Twoje trafione liczby: " + userNumbers);
+        } else {
+            System.out.println("Niestety, nie trafiłeś żadnej liczby.");
         }
-        return selectedNumbers;
     }
-
-    public Set<Integer> randomNumbers() {
-
-        Set<Integer> randomNumbers = new HashSet<>();
-
-        SecureRandom secureRandomGenerator = new SecureRandom();
-
-        for (int i = 0; i < QUANTITY_OF_NUMBERS; i++) {
-            int min = 1;
-            int max = 99;
-
-            int nextInt = secureRandomGenerator.nextInt(max - min + 1) + min;
-            randomNumbers.add(nextInt);
-        }
-        return randomNumbers;
-    }
-
 }
