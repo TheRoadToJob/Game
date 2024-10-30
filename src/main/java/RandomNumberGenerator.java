@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class RandomNumberGenerator {
 
-    private SecureRandom secureRandom;
+    private final SecureRandom secureRandom;
 
     public RandomNumberGenerator() {
         this.secureRandom = new SecureRandom();
