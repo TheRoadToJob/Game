@@ -14,9 +14,9 @@ public class RandomNumberGenerator {
 
         Set<Integer> randomNumbers = new HashSet<>();
 
-        for (int i = 0; i < quantityOfNumbers; i++) {
+        while (randomNumbers.size() < quantityOfNumbers) {
 
-            int number = secureRandom.nextInt(99) + 1;
+            int number = secureRandom.nextInt(LottoGame.MAX_NUM) + LottoGame.MIN_NUM;
             randomNumbers.add(number);
         }
         return randomNumbers;

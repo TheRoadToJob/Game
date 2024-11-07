@@ -21,12 +21,13 @@ public class UserInput {
                 System.out.println("Podaj liczbę: ");
                 int num = scanner.nextInt();
 
-                if (num >= 1 && num <= 99) {
+                if (num >= LottoGame.MIN_NUM && num <= LottoGame.MAX_NUM) {
                     if (!selectedNumbers.add(num)) {
                         System.out.println("Ta liczba została już wybrana.");
                     }
                 } else {
-                    System.out.println("Podałeś liczbę spoza zakresu (1 - 99)!");
+                    System.out.println("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
+                            "-" + LottoGame.MAX_NUM + ")!");
                 }
 
             } catch (InputMismatchException e) {
@@ -36,5 +37,4 @@ public class UserInput {
         }
         return selectedNumbers;
     }
-
 }
