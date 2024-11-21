@@ -1,9 +1,11 @@
+package lotto;
+
 import java.util.Scanner;
 
 public class LottoGameStart {
 
-    public static void main(String[] args) {
 
+    public void start() {
         Scanner scanner = new Scanner(System.in);
 
         UserInput userInput = new UserInput(scanner);

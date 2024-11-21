@@ -1,8 +1,10 @@
+package lotto;
+
 import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RandomNumberGenerator {
+class RandomNumberGenerator {
 
     private final SecureRandom secureRandom;
 

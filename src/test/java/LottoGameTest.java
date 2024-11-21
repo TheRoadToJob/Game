@@ -1,3 +1,7 @@
+import lotto.LottoGame;
+import lotto.Output;
+import lotto.RandomNumberGenerator;
+import lotto.UserInput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,6 @@
-public class ConsoleOutput implements Output{
+package lotto;
+
+class ConsoleOutput implements Output{
 
     @Override
     public void println(String message) {

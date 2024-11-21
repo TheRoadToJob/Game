@@ -1,6 +1,8 @@
+package lotto;
+
 import java.util.Set;
 
-public class LottoGame {
+class LottoGame {
 
 
     private final UserInput userInput;

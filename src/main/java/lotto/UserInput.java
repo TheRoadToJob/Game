@@ -1,9 +1,11 @@
+package lotto;
+
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-public class UserInput {
+class UserInput {
 
     private final Scanner scanner;
 
