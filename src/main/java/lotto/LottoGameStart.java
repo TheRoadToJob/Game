@@ -2,18 +2,17 @@ package lotto;
 
 import java.util.Scanner;
 
-public class LottoGameStart {
-
+class LottoGameStart {
 
     public void start() {
+
         Scanner scanner = new Scanner(System.in);
 
         UserInput userInput = new UserInput(scanner);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        Output output = new ConsoleOutput();
+        ConsoleOutput consoleOutput = new ConsoleOutput(userInput.toString());
 
-        LottoGame lottoGame = new LottoGame(userInput, randomNumberGenerator, output);
-
+        LottoGame lottoGame = new LottoGame(userInput, randomNumberGenerator, consoleOutput);
         lottoGame.play();
     }
 }

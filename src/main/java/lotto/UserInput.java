@@ -29,14 +29,15 @@ class UserInput {
                     }
                 } else {
                     System.out.println("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
-                            "-" + LottoGame.MAX_NUM + ")!");
+                            " - " + LottoGame.MAX_NUM + ")!");
                 }
 
             } catch (InputMismatchException e) {
+                //return new ConsoleOutput("Błędny format! Wprowadź liczbę całkowitą.");
                 System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
                 scanner.next();
             }
         }
-        return selectedNumbers;
+        return  selectedNumbers;
     }
 }
