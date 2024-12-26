@@ -6,6 +6,10 @@ public class ConsoleInputProvider implements InputProvider {
 
     Scanner scanner = new Scanner(System.in);
 
+    public ConsoleInputProvider(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     @Override
     public String getString() {
         return scanner.nextLine();
