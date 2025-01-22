@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleInputProvider implements InputProvider {
 
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
     public ConsoleInputProvider(Scanner scanner) {
         this.scanner = scanner;
@@ -14,6 +14,7 @@ public class ConsoleInputProvider implements InputProvider {
     public String getString() {
         return scanner.nextLine();
     }
+    
     @Override
     public String getString(String message) {
         System.out.println(message);
@@ -26,7 +27,7 @@ public class ConsoleInputProvider implements InputProvider {
             try {
                 return Integer.parseInt(scanner.nextLine());
             }
-            catch (NumberFormatException e){
+            catch (NumberFormatException e) {
                 System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
             }
         }
@@ -43,5 +44,15 @@ public class ConsoleInputProvider implements InputProvider {
                 System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
             }
         }
+    }
+
+    @Override
+    public void print(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void closeScanner() {
+        scanner.close();
     }
 }

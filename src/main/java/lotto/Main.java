@@ -6,21 +6,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        GameSelector gameSelector = new GameSelector(new Scanner(System.in));
+        ConsoleInputProvider consoleInputProvider = new ConsoleInputProvider(new Scanner(System.in));
+        GameSelector gameSelector = new GameSelector(consoleInputProvider);
 
         boolean keepPlaying;
+
         do {
             Game selectedGame = gameSelector.chooseGame();
             if (selectedGame != null) {
-                System.out.println("Wybrano grę: " + selectedGame.getName());
+                consoleInputProvider.print("Wybrano grę: " + selectedGame.getName());
                 selectedGame.start();
             } else {
-                System.out.println("Nie wybrano poprawnie gry.");
+                consoleInputProvider.print("Nie wybrano poprawnie gry.");
             }
-            System.out.println("Czy chcesz zagrać ponownie? (tak/nie)");
-            keepPlaying = scanner.next().equalsIgnoreCase("tak");
+            consoleInputProvider.print("Czy chcesz zagrać ponownie? (tak/nie)");
+            keepPlaying = consoleInputProvider.getString().equalsIgnoreCase("tak");
 
         } while (keepPlaying);
+
+        consoleInputProvider.closeScanner();
     }
 }

@@ -2,15 +2,14 @@ package lotto;
 
 import java.util.HashSet;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Set;
 
 class UserInput {
 
-    private final Scanner scanner;
+    private final ConsoleInputProvider consoleInputProvider;
 
-    public UserInput(Scanner scanner) {
-        this.scanner = scanner;
+    public UserInput(ConsoleInputProvider consoleInputProvider) {
+        this.consoleInputProvider = consoleInputProvider;
     }
 
     public Set<Integer> selectNumbers(int quantityOfNumbers) {
@@ -20,22 +19,21 @@ class UserInput {
         while (selectedNumbers.size() < quantityOfNumbers) {
 
             try {
-                System.out.println("Podaj liczbę: ");
-                int num = scanner.nextInt();
+                consoleInputProvider.print("Podaj liczbę: ");
+                int num = consoleInputProvider.getInt();
 
                 if (num >= LottoGame.MIN_NUM && num <= LottoGame.MAX_NUM) {
                     if (!selectedNumbers.add(num)) {
-                        System.out.println("Ta liczba została już wybrana.");
+                        consoleInputProvider.print("Ta liczba została już wybrana.");
                     }
                 } else {
-                    System.out.println("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
+                    consoleInputProvider.print("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
                             " - " + LottoGame.MAX_NUM + ")!");
                 }
 
             } catch (InputMismatchException e) {
-                //return new ConsoleOutput("Błędny format! Wprowadź liczbę całkowitą.");
-                System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
-                scanner.next();
+                consoleInputProvider.print("Błędny format! Wprowadź liczbę całkowitą.");
+                consoleInputProvider.getInt();
             }
         }
         return  selectedNumbers;
