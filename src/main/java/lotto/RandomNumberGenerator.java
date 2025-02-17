@@ -22,5 +22,6 @@ class RandomNumberGenerator {
             randomNumbers.add(number);
         }
         return randomNumbers;
+
     }
 }
