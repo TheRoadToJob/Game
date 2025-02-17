@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.HashSet;
-import java.util.InputMismatchException;
 import java.util.Set;
 
 class UserInput {
@@ -18,24 +17,18 @@ class UserInput {
 
         while (selectedNumbers.size() < quantityOfNumbers) {
 
-            try {
-                consoleInputProvider.print("Podaj liczbę: ");
-                int num = consoleInputProvider.getInt();
+            consoleInputProvider.print("Podaj liczbę: ");
+            int num = consoleInputProvider.getInt();
 
-                if (num >= LottoGame.MIN_NUM && num <= LottoGame.MAX_NUM) {
-                    if (!selectedNumbers.add(num)) {
-                        consoleInputProvider.print("Ta liczba została już wybrana.");
-                    }
-                } else {
-                    consoleInputProvider.print("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
-                            " - " + LottoGame.MAX_NUM + ")!");
+            if (num >= LottoGame.MIN_NUM && num <= LottoGame.MAX_NUM) {
+                if (!selectedNumbers.add(num)) {
+                    consoleInputProvider.print("Ta liczba została już wybrana.");
                 }
-
-            } catch (InputMismatchException e) {
-                consoleInputProvider.print("Błędny format! Wprowadź liczbę całkowitą.");
-                consoleInputProvider.getInt();
+            } else {
+                consoleInputProvider.print("Podałeś liczbę spoza zakresu (" + LottoGame.MIN_NUM +
+                        " - " + LottoGame.MAX_NUM + ")!");
             }
         }
-        return  selectedNumbers;
+        return selectedNumbers;
     }
 }
