@@ -39,12 +39,7 @@ class LottoGameTest {
         lottoGame.play();
 
         //then
-        //verify(inputProviderMock).print("Wybierz 6 liczb z puli od 1 do 99.");
-        //verify(inputProviderMock).print("Twoje liczby to: " + userNumbers);
-        //verify(inputProviderMock).print("Teraz losujemy liczby.");
-        //verify(inputProviderMock).print("Wylosowane liczby to: " + drawnNumbers);
         verify(inputProviderMock).print("Liczba trafionych liczb to: 6");
-        //verify(inputProviderMock).print("Twoje trafione liczby: [10, 22, 34, 45, 56, 69]");
     }
 
     @Test

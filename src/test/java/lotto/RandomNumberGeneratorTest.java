@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -8,11 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RandomNumberGeneratorTest {
 
+    RandomNumberGenerator generator;
+
+    @BeforeEach
+    void init() {
+        generator = new RandomNumberGenerator();
+    }
+
+
     @Test
     void should_generate_correct_number_of_unique_numbers() {
 
         //given
-        RandomNumberGenerator generator = new RandomNumberGenerator();
         int exceptedSize = 6;
 
         //when
@@ -26,8 +34,6 @@ class RandomNumberGeneratorTest {
     void should_generate_numbers_within_range() {
 
         //given
-
-        RandomNumberGenerator generator = new RandomNumberGenerator();
         int quantity = 10;
 
         //when
@@ -42,7 +48,6 @@ class RandomNumberGeneratorTest {
     void should_generate_unique_numbers() {
 
         //given
-        RandomNumberGenerator generator = new RandomNumberGenerator();
         int quantity = 10;
 
         //when

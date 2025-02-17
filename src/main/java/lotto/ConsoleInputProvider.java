@@ -14,7 +14,7 @@ public class ConsoleInputProvider implements InputProvider {
     public String getString() {
         return scanner.nextLine();
     }
-    
+
     @Override
     public String getString(String message) {
         System.out.println(message);
@@ -23,11 +23,10 @@ public class ConsoleInputProvider implements InputProvider {
 
     @Override
     public int getInt() {
-        while(true) {
+        while (true) {
             try {
                 return Integer.parseInt(scanner.nextLine());
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
             }
         }
@@ -35,12 +34,11 @@ public class ConsoleInputProvider implements InputProvider {
 
     @Override
     public int getInt(String message) {
-        while(true) {
+        while (true) {
             try {
                 System.out.println(message);
                 return Integer.parseInt(scanner.nextLine());
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Błędny format! Wprowadź liczbę całkowitą.");
             }
         }

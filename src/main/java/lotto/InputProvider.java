@@ -1,6 +1,6 @@
 package lotto;
 
-interface InputProvider {
+public interface InputProvider {
 
     String getString();
     String getString(String message);

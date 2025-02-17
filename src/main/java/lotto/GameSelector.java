@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.InputMismatchException;
-
 class GameSelector {
 
     static final int MAX_NUMBER_OF_ATTEMPTS = 3;
@@ -33,7 +31,7 @@ class GameSelector {
                         consoleInputProvider.print("Błędny wybór!");
                         count++;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 consoleInputProvider.print("Błędny format! Wprowadź liczbę całkowitą.");
                 consoleInputProvider.getInt();
                 count++;
