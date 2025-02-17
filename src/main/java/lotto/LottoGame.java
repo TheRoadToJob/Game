@@ -20,7 +20,7 @@ class LottoGame {
 
     public void play() {
 
-        inputProvider.print("Wybierz 6 liczb z puli od " + MIN_NUM + " do " + MAX_NUM + ".");
+        inputProvider.print("Wybierz " + QUANTITY_OF_NUMBERS + " liczb z puli od " + MIN_NUM + " do " + MAX_NUM + ".");
 
         Set<Integer> userNumbers = userInput.selectNumbers(QUANTITY_OF_NUMBERS);
         inputProvider.print("Twoje liczby to: " + userNumbers);
