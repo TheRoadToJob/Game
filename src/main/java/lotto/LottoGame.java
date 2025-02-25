@@ -6,37 +6,53 @@ class LottoGame {
 
     private final UserInput userInput;
     private final RandomNumberGenerator randomNumberGenerator;
-    private final InputProvider inputProvider;
 
     private static final int QUANTITY_OF_NUMBERS = 6;
     public static final int MAX_NUM = 99;
     public static final int MIN_NUM = 1;
 
-    public LottoGame(UserInput userInput, RandomNumberGenerator randomNumberGenerator, InputProvider inputProvider) {
+    public LottoGame(UserInput userInput, RandomNumberGenerator randomNumberGenerator) {
         this.userInput = userInput;
         this.randomNumberGenerator = randomNumberGenerator;
-        this.inputProvider = inputProvider;
     }
 
-    public void play() {
+    public String play() {
+        StringBuilder result = new StringBuilder();
 
-        inputProvider.print("Wybierz " + QUANTITY_OF_NUMBERS + " liczb z puli od " + MIN_NUM + " do " + MAX_NUM + ".");
+        result.append("Wybierz ")
+                .append(QUANTITY_OF_NUMBERS)
+                .append(" liczb z puli od ")
+                .append(MIN_NUM)
+                .append(" do ")
+                .append(MAX_NUM).append(".")
+                .append("\n");
 
         Set<Integer> userNumbers = userInput.selectNumbers(QUANTITY_OF_NUMBERS);
-        inputProvider.print("Twoje liczby to: " + userNumbers);
+        result.append("Twoje liczby to: ")
+                .append(userNumbers)
+                .append("\n");
 
-        inputProvider.print("Teraz losujemy liczby.");
+        result.append("Teraz losujemy liczby.")
+                .append("\n");
         Set<Integer> drawnNumbers = randomNumberGenerator.generateRandomNumbers(QUANTITY_OF_NUMBERS);
-        inputProvider.print("Wylosowane liczby to: " + drawnNumbers);
+        result.append("Wylosowane liczby to: ")
+                .append(drawnNumbers)
+                .append("\n");
 
         userNumbers.retainAll(drawnNumbers);
 
-        inputProvider.print("Liczba trafionych liczb to: " + userNumbers.size());
+        result.append("Ilość trafionych liczb to: ")
+                .append(userNumbers.size())
+                .append("\n");
 
         if (!userNumbers.isEmpty()) {
-            inputProvider.print("Twoje trafione liczby: " + userNumbers);
+            result.append("Twoje trafione liczby: ")
+                    .append(userNumbers)
+                    .append("\n");
         } else {
-            inputProvider.print("Niestety, nie trafiłeś żadnej liczby.");
+            result.append("Niestety, nie trafiłeś żadnej liczby.")
+                    .append("\n");
         }
+        return result.toString();
     }
 }

@@ -9,8 +9,9 @@ class LottoGameStart implements Game {
         UserInput userInput = new UserInput(consoleInputProvider);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        LottoGame lottoGame = new LottoGame(userInput, randomNumberGenerator, consoleInputProvider);
-        lottoGame.play();
+        LottoGame lottoGame = new LottoGame(userInput, randomNumberGenerator);
+        String result = lottoGame.play();
+        consoleInputProvider.print(result);
     }
 
     @Override

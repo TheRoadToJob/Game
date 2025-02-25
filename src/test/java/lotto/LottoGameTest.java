@@ -6,23 +6,22 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class LottoGameTest {
 
     UserInput userInputMock;
     RandomNumberGenerator randomNumberGeneratorMock;
-    InputProvider inputProviderMock;
+
     LottoGame lottoGame;
 
     @BeforeEach
     void init() {
         userInputMock = mock(UserInput.class);
         randomNumberGeneratorMock = mock(RandomNumberGenerator.class);
-        inputProviderMock = mock(InputProvider.class);
-        lottoGame = new LottoGame(userInputMock, randomNumberGeneratorMock, inputProviderMock);
+        lottoGame = new LottoGame(userInputMock, randomNumberGeneratorMock);
     }
 
     @Test
@@ -36,10 +35,17 @@ class LottoGameTest {
                 .thenReturn(drawnNumbers);
 
         //when
-        lottoGame.play();
+        String result = lottoGame.play();
 
         //then
-        verify(inputProviderMock).print("Liczba trafionych liczb to: 6");
+        assertTrue(result.contains("Ilość trafionych liczb to: 6"));
+        assertTrue(result.contains("Twoje trafione liczby: "));
+        assertTrue(result.contains("10"));
+        assertTrue(result.contains("22"));
+        assertTrue(result.contains("34"));
+        assertTrue(result.contains("45"));
+        assertTrue(result.contains("56"));
+        assertTrue(result.contains("69"));
     }
 
     @Test
@@ -53,10 +59,10 @@ class LottoGameTest {
                 .thenReturn(drawnNumbers);
 
         //when
-        lottoGame.play();
+        String result = lottoGame.play();
 
         //then
-        verify(inputProviderMock).print("Liczba trafionych liczb to: 3");
+        assertTrue(result.contains("Ilość trafionych liczb to: 3"));
     }
 
     @Test
@@ -70,9 +76,10 @@ class LottoGameTest {
                 .thenReturn(drawnNumbers);
 
         //when
-        lottoGame.play();
+        String result = lottoGame.play();
 
         //then
-        verify(inputProviderMock).print("Liczba trafionych liczb to: 0");
+        assertTrue(result.contains("Ilość trafionych liczb to: 0"));
+        assertTrue(result.contains("Niestety, nie trafiłeś żadnej liczby."));
     }
 }
